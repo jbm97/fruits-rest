@@ -9,6 +9,7 @@ const { veggies } = require("./models/veggies");
 const { meats } = require("./models/meats");
 const { snacks } = require("./models/snacks");
 const { recipes } = require("./models/recipes");
+const { coffee } = require("./models/coffee");
 
 //Establish middleware
 app.use(methodOverride("_method")); // for method override, put as first one?
@@ -48,6 +49,10 @@ app.get("/about", (req, res) => {
     res.render("about/index");
 });
 
+app.get("/coffee", (req, res) => {
+    res.render("coffee/index", { allCoffee: coffee });
+});
+
 //add /new routes
 app.get("/fruits/new", (req, res) => {
     res.render("fruits/new.ejs");
@@ -59,6 +64,10 @@ app.get("/veggies/new", (req, res) => {
 
 app.get("/meats/new", (req, res) => {
     res.render("meats/new.ejs");
+});
+
+app.get("/coffee/new", (req, res) => {
+    res.render("coffee/new.ejs");
 });
 
 // app.get("/recipes/new", (req, res) => {
@@ -107,6 +116,12 @@ app.post("/meats", (req, res) => {
     }
     meats.push(req.body);
     res.redirect("/meats");
+});
+
+app.post("/coffee", (req, res) => {
+    console.log(req.body);
+    coffee.push(req.body);
+    res.redirect("/coffee");
 });
 
 // app.post("/recipes", (req, res) => {
@@ -189,6 +204,20 @@ app.get("/recipes/:indexOfRecipesArray", (req, res) => {
     }
 });
 
+app.get("/coffee/:indexOfCoffeeArray", (req, res) => {
+    let idx = parseInt(req.params.indexOfCoffeeArray);
+
+    if (idx >= coffee.length) {
+        // res.send('There is no fruit at that index.'); // one solution
+        // res.send(fruits);
+        res.render("404", {});
+    } else {
+        // res.send(fruits[idx]);
+        res.render("coffee/show", { coffee: coffee[idx], id: idx });
+    }
+});
+
+
 //add edit route
 app.get("/fruits/:id/edit", (req, res) => {
     const fruit = fruits[req.params.id];
@@ -225,6 +254,13 @@ app.get("/snacks/:id/edit", (req, res) => {
     res.render("snacks/edit", { snack, id });
 });
 
+app.get("/coffee/:id/edit", (req, res) => {
+    const coffees = coffee[req.params.id];
+    let id = parseInt(req.params.id);
+
+    res.render("coffee/edit", { coffees, id }); // === { fruit: fruit, id: id }
+});
+
 
 //add delete route
 app.get('/fruits/:id/delete', (req, res) => {
@@ -248,6 +284,13 @@ app.get('/veggies/:id/delete', (req, res) => {
     res.render('veggies/delete', { veggie, id });
 });
 
+app.get('/coffee/:id/delete', (req, res) => {
+    const coffees = coffee[req.params.id];
+    let id = parseInt(req.params.id);
+    
+    res.render('coffee/delete', { coffees, id });
+});
+
 //delete item
 app.delete('/fruits/:id', (req, res) => {
     // remove the fruit item from the fruits array
@@ -268,6 +311,13 @@ app.delete('/veggies/:id', (req, res) => {
     veggies.splice(parseInt(req.params.id), 1);
     
     res.redirect('/veggies'); // redirect back to index page (/veggies)
+});
+
+app.delete('/coffee/:id', (req, res) => {
+    // remove the fruit item from the fruits array
+    coffee.splice(parseInt(req.params.id), 1);
+    
+    res.redirect('/coffee'); // redirect back to index page (/fruits)
 });
 
 //add put route
@@ -302,6 +352,12 @@ app.put("/veggies/:id", (req, res) => {
     }
     veggies[parseInt(req.params.id)] = req.body;
     res.redirect("/veggies");
+});
+
+app.put("/coffee/:id", (req, res) => {
+    console.log("Update coffee:\n", req.body);
+    coffee[parseInt(req.params.id)] = req.body;
+    res.redirect("/coffee");
 });
 
 //Listen for server

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link href="/css/coffee.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <title>Edit Coffee - Jake's Food Blog</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="/" class="logo">Jake's Food Blog</a>
+            <!-- add image above instead -->
+
+            <nav class="navbar">
+                <a href="/recipes">Recipes</a>
+                <a href="/fruits">Fruits</a>
+                <a href="/veggies">Veggies</a>
+                <a href="/meats">Meats</a>
+                <a href="/snacks">Snacks</a>
+                <a href="/about">About</a>
+                <a href="/coffee">Coffee</a>
+            </nav>
+        </header>
+        <br /><br />
+
+        <div class="form-container">
+            <h1>Edit <%= coffees.name %></h1>
+            <br />
+            <form action="/coffee/<%= id %>/?_method=PUT" method="POST">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= coffees.name %>"/>
+                <br /><br />
+                <label for="roast">Roast</label>
+                <input type="text" name="roast" id="roast" value="<%= coffees.roast %>"/>
+                <br /><br />
+                <label for="tastingNote">Tasting Note</label>
+                <input type="text" name="tastingNote" id="tastingNote" value="<%= coffees.tastingNote %>"/>
+                <br /><br />
+                <input type="submit" value="Edit <%= coffees.name %>" />
+            </form>
+        </div>
+    </body>
+</html>

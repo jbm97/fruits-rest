@@ -4,10 +4,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-        <link href="/css/fruits.css" rel="stylesheet" />
+        <link href="/css/coffee.css" rel="stylesheet" />
         <link href="/css/style.css" rel="stylesheet" />
         <link href="/css/new.css" rel="stylesheet" />
-        <title>New Fruit - Jake's Food Blog</title>
+        <title>New Coffee - Jake's Food Blog</title>
     </head>
 
     <body>
@@ -28,16 +28,16 @@
 
         <div class="form-container">
             <section class="contact" id="contact">
-                <h2 class="heading">Add <span>New Fruit</span></h2>
+                <h2 class="heading">Add <span>New Coffee</span></h2>
 
-                <form action="/fruits" method="POST">
+                <form action="/coffee" method="POST">
                     <div class="input-box">
                         <input type="text" name="name" id="name" placeholder="Name" />
-                        <input type="text" name="color" id="color" placeholder="Color" />
+                        <input type="text" name="roast" id="roast" placeholder="Roast" />
                     </div>
                     <div class="input-box">
-                        <label for="readyToEat">Is Ready to Eat?</label>
-                        <input type="checkbox" name="readyToEat" id="readyToEat" />
+                        <label for="tastingNote">What is the tasting note?</label>
+                        <input type="text" name="tastingNote" id="tastingNote" placeholder="Tasting Note" />
                     </div>
                     <textarea
                         name=""
@@ -46,7 +46,7 @@
                         rows="10"
                         placeholder="Description"
                     ></textarea>
-                    <input type="submit" value="Create Fruit" class="btn" />
+                    <input type="submit" value="Create Coffee" class="btn" />
                 </form>
             </section>
         </div>

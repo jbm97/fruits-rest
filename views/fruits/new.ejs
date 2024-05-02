@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link href="/css/fruits.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <link href="/css/new.css" rel="stylesheet" />
+        <title>New Fruit - Jake's Food Blog</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="/" class="logo">Jake's Food Blog</a>
+            <!-- add image above instead -->
+
+            <nav class="navbar">
+                <a href="/recipes">Recipes</a>
+                <a href="/fruits">Fruits</a>
+                <a href="/veggies">Veggies</a>
+                <a href="/meats">Meats</a>
+                <a href="/snacks">Snacks</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+
+        <div class="form-container">
+            <section class="contact" id="contact">
+                <h2 class="heading">Add <span>New Fruit</span></h2>
+
+                <form action="/fruits" method="POST">
+                    <div class="input-box">
+                        <input type="text" name="name" id="name" placeholder="Name" />
+                        <input type="text" name="color" id="color" placeholder="Color" />
+                    </div>
+                    <div class="input-box">
+                        <label for="readyToEat">Is Ready to Eat?</label>
+                        <input type="checkbox" name="readyToEat" id="readyToEat" />
+                    </div>
+                    <textarea
+                        name=""
+                        id=""
+                        cols="30"
+                        rows="10"
+                        placeholder="Description"
+                    ></textarea>
+                    <input type="submit" value="Create Fruit" class="btn" />
+                </form>
+            </section>
+        </div>
+    </body>
+</html>

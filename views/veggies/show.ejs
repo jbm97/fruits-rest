@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link href="/css/veggies.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <title>Veggies - Jake's Food Blog</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="/" class="logo">Jake's Food Blog</a>
+            <!-- add image above instead -->
+
+            <nav class="navbar">
+                <a href="/recipes">Recipes</a>
+                <a href="/fruits">Fruits</a>
+                <a href="/veggies">Veggies</a>
+                <a href="/meats">Meats</a>
+                <a href="/snacks">Snacks</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        <br /><br />
+
+        <section class="timeline">
+            <div class="timeline-row">
+                <div class="timeline-column">
+                    <h2 class="title">
+                        <span class="veggieName"></span><span class="animate" style="--i: 1"></span>
+                    </h2>
+                    <div class="timeline-box">
+                        <div class="timeline-content">
+                            <div class="content">
+                                <div class="year"><i class="bx bxs-calendar"></i>2024 - 2025</div>
+                                <p>Color: <%= veggie.color %></p>
+                                <% if (veggie.readyToEat === true) { %>
+                                <p>Ready To Eat</p>
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Veniam, vero!
+                                </p>
+                                <% } else if (veggie.readyToEat === "Never") { %>
+                                <p>Shouldn't be consumed</p>
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Veniam, vero!
+                                </p>
+                                <% } else { %>
+                                <p>Not Ready to Eat</p>
+                                <p>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                                    Veniam, vero!
+                                </p>
+                                <% } %>
+                                <a href="/veggies/">Go Back</a>
+                                <br>
+                                <button id="edit-btn"><a href="/veggies/<%= id %>/edit">Edit</a></button>
+                                <br>
+                                <button id="edit-btn"><a href="/veggies/<%= id %>/delete">Delete</a></button>
+                            </div>
+                        </div>
+                        <div></div>
+
+                        <span class="animate" style="--i: 2"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const veggieName = "<%= veggie.name %>";
+            const typed = new Typed(".veggieName", {
+                strings: [veggieName],
+                typeSpeed: 50,
+                backSpeed: 100,
+                backDelay: 2000,
+                loop: true,
+            });
+        });
+    </script>
+</html>

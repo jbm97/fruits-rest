@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link href="/css/meats.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <title>Edit Meat - Jake's Food Blog</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="/" class="logo">Jake's Food Blog</a>
+            <!-- add image above instead -->
+
+            <nav class="navbar">
+                <a href="/recipes">Recipes</a>
+                <a href="/fruits">Fruits</a>
+                <a href="/veggies">Veggies</a>
+                <a href="/meats">Meats</a>
+                <a href="/snacks">Snacks</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        <br /><br />
+
+        <div class="form-container">
+            <h3>Are you sure you want to delete <%= meat.name %>?</h3>
+            <form action="/meats/<%= id %>/?_method=DELETE" method="POST">
+                <input type="submit" value="Yes, Delete <%= meat.name %>">
+            </form>
+            <button><a href="/meats/<%= id %>">NO!</a></button>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <link href="/css/meats.css" rel="stylesheet" />
+        <link href="/css/style.css" rel="stylesheet" />
+        <title>Edit Meat - Jake's Food Blog</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="/" class="logo">Jake's Food Blog</a>
+            <!-- add image above instead -->
+
+            <nav class="navbar">
+                <a href="/recipes">Recipes</a>
+                <a href="/fruits">Fruits</a>
+                <a href="/veggies">Veggies</a>
+                <a href="/meats">Meats</a>
+                <a href="/snacks">Snacks</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        <br /><br />
+
+        <div class="form-container">
+            <h1>Edit <%= meat.name %></h1>
+            <br />
+            <form action="/meats/<%= id %>/?_method=PUT" method="POST">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="<%= meat.name %>"/>
+                <br /><br />
+                <label for="color">Color</label>
+                <input type="text" name="color" id="color" value="<%= meat.color %>"/>
+                <br /><br />
+                <label for="readyToEat">Is Ready to Eat</label>
+                <input type="checkbox" name="readyToEat" id="readyToEat"
+                <% if (meat.readyToEat === true) { %>
+                    checked
+                <% } %>
+                />
+                <br /><br />
+                <input type="submit" value="Edit <%= meat.name %>" />
+            </form>
+        </div>
+    </body>
+</html>

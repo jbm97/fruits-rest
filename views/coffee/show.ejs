@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-        <link href="/css/veggies.css" rel="stylesheet" />
+        <link href="/css/coffee.css" rel="stylesheet" />
         <link href="/css/style.css" rel="stylesheet" />
-        <title>Veggies - Jake's Food Blog</title>
+        <title>Coffee - Jake's Food Blog</title>
     </head>
 
     <body>
@@ -29,25 +29,22 @@
         <section class="timeline">
             <div class="timeline-row">
                 <div class="timeline-column">
-                    <h2 class="title">Veggies<span class="animate" style="--i: 1"></span></h2>
-                    <h3 class="add-new">
-                        Add New Veggie!<span class="animate" style="--i: 1"></span>
-                    </h3>
+                    <h2 class="title">
+                        <span class="coffeeName"></span><span class="animate" style="--i: 1"></span>
+                    </h2>
                     <div class="timeline-box">
-                        <% for (let index = 0; index < allVeggies.length; index++ ) { %> <% let
-                        veggies = allVeggies[index] %>
                         <div class="timeline-content">
                             <div class="content">
                                 <div class="year"><i class="bx bxs-calendar"></i>2024 - 2025</div>
-                                <h3><%= veggies.name %></h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui,
-                                    soluta iste quas accusamus id natus!
-                                </p>
-                                <a href="/veggies/<%= index %>">Checkout more...</a>
+                                <p>Roast: <%= coffee.roast %></p>
+                                <a href="/coffee/">Go Back</a>
+                                <br>
+                                <button id="edit-btn"><a href="/coffee/<%= id %>/edit">Edit</a></button>
+                                <br>
+                                <button id="edit-btn"><a href="/coffee/<%= id %>/delete">Delete</a></button>
                             </div>
                         </div>
-                        <% } %>
+                        <div></div>
 
                         <span class="animate" style="--i: 2"></span>
                     </div>
@@ -55,4 +52,19 @@
             </div>
         </section>
     </body>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const coffeeName = "<%= coffee.name %>";
+            const typed = new Typed(".coffeeName", {
+                strings: [coffeeName],
+                typeSpeed: 50,
+                backSpeed: 100,
+                backDelay: 2000,
+                loop: true,
+            });
+        });
+    </script>
 </html>
